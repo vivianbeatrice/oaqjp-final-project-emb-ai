@@ -9,18 +9,19 @@ def emotion_detector(text_to_analyse):
     
     #turns response into json dict
     formatted_response = json.loads(response.text)
-    
    
     #retrieves requested content as list
-    emoPred = formatted_response['emotionPredictions']
+    emopred = formatted_response['emotionPredictions']
 
-    
-    
-    #returns the keys for i in emoPred: emotion, target, emotionMentions
-    for i in emoPred:
-        print(i.keys())
-        print("XXX")
+    #puts the i of emotion from emopred into emolist
+    emolist = [i["emotion"] for i in emopred]
 
+    #need to pull keys & values from emolist into emokeys & emovalues, then zip into emodict
+    #are the below lists correct?
+    emokeys = list(i.keys() for i in emolist)
+    emovalues = list([i.values() for i in emolist])
+
+ 
 
     #return test
 
